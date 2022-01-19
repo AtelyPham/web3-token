@@ -44257,8 +44257,10 @@ var verify_verify = function verify(token) {
 
   var lines = body.split('\n');
   var parsed_body = verify_parseBody(lines);
+  console.log(parsed_body);
+  console.log(new Date(parsed_body['expiration-time']) < new Date());
 
-  if (new Date(parsed_body['expiration-date']) < new Date()) {
+  if (new Date(parsed_body['expiration-time']) < new Date()) {
     throw new Error('Token expired');
   }
 
